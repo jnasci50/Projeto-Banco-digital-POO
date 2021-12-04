@@ -3,7 +3,7 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Account;
+import Entities.Account;
 
 public class Program {
 
@@ -12,6 +12,8 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
         Account account;
+
+        System.out.println("Bem vindo ao JavaBank. ");
 
         System.out.print("Entre com o número da conta: ");
         int number = sc.nextInt();
@@ -30,23 +32,26 @@ public class Program {
         }
 
         System.out.println();
-        System.out.println("Dados da conta:");
+        System.out.println("Dados da sua conta:");
         System.out.println(account);
 
-        System.out.println();
-        System.out.print("Insira um valor de depósito: ");
-        double depositValue = sc.nextDouble();
-        account.deposit(depositValue);
-        System.out.println("Dados da conta atualizados:");
-        System.out.println(account);
 
-        System.out.println();
+        System.out.println("Qual operação gostaria de realizar? Digite: 1° deposito / 2° saque");
 
-        System.out.println("Gostaria de realizar um saque. (y/n)?");
+        int selectoperation = sc.nextInt();
 
-        char responseSaque = sc.next().charAt(0);
+        if (selectoperation == 1){
 
-        if (responseSaque == 'y')  {
+            System.out.println();
+            System.out.print("Insira um valor de depósito: ");
+
+            double depositValue = sc.nextDouble();
+            account.deposit(depositValue);
+            System.out.println("Dados da conta atualizados:");
+            System.out.println(account);
+
+            System.out.println();
+        }else if(selectoperation == 2){
 
             System.out.println();
             System.out.print("Insira um valor de retirada: ");
@@ -55,7 +60,9 @@ public class Program {
             System.out.println("Saque realizada com sucesso");
             System.out.println("Saldo Atualizado: " + account.getsaldo());
             System.out.println();
+        }else{
 
+            System.out.println("Operação inválida");
         }
 
         System.out.println("Obrigado por utilizar o JavaBank:");
