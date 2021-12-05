@@ -9,6 +9,7 @@ public class Account {
     public Account(int numero, String titular) {
         this.numero = numero;
         this.titular = titular;
+
     }
 
     public Account(int numero, String titular, double initialDeposit) {
@@ -38,7 +39,9 @@ public class Account {
     }
 
     public void withdraw(double amount) {
-        saldo -= amount + 5.0;
+
+           saldo -= amount;
+
     }
 
     public String toString() {
