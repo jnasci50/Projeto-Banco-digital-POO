@@ -19,8 +19,12 @@ public class Program {
         int number = sc.nextInt();
 
         System.out.print("Entre com nome do titular: ");
-        sc.nextLine();
 
+        sc.nextLine();
+/**
+* Entrada de dados via teclado.
+*
+* */
         String holder = sc.nextLine();
         System.out.print("Existe um depósito inicial? (y/n)? ");
 
@@ -42,6 +46,8 @@ public class Program {
 
         System.out.println("Qual operação gostaria de realizar? Digite: 1° deposito / 2° saque");
 
+
+
         int selectoperation = sc.nextInt();
 
 
@@ -54,8 +60,8 @@ public class Program {
             account.deposit(depositValue);
             System.out.println("Dados da conta atualizados:");
             System.out.println(account);
-
             System.out.println();
+
         } else if (selectoperation == 2) {
 
             if (account.getsaldo() != 0.0) {
@@ -70,18 +76,13 @@ public class Program {
             } else {
 
                 System.out.println("Saque indisponivel, seu saldo:" + account.getsaldo());
-                System.out.println("por favor realize um deposito");
+                System.out.println("por favor realize um deposito, Insira um valor de depósito:");
+                double valueZeroAccount = sc.nextDouble();
 
-                System.out.println();
-                System.out.print("Insira um valor de depósito:");
-
-                double depositValue = sc.nextDouble();
-                account.deposit(depositValue);
-                System.out.println("Deposito realizado com sucesso");
+                account.blockWithdraw(valueZeroAccount);
                 System.out.println("Saldo Atualizado: " + account.getsaldo());
 
             }
-
 
         } else {
 
@@ -120,25 +121,17 @@ public class Program {
                     } else {
 
                         System.out.println("Saque indisponivel, seu saldo:" + account.getsaldo());
-                        System.out.println("por favor realize um deposito");
+                        System.out.println("por favor realize um deposito, Insira um valor de depósito:");
+                        double valueZeroAccount = sc.nextDouble();
 
-                        System.out.println();
-                        System.out.print("Insira um valor de depósito: ");
-
-                        double depositValue = sc.nextDouble();
-                        account.deposit(depositValue);
-                        System.out.println("Deposito realizado com sucesso:");
+                        account.blockWithdraw(valueZeroAccount);
                         System.out.println("Saldo Atualizado: " + account.getsaldo());
                         i = 0;
                     }
                 }
-
             }
         }
-        System.out.println();
-        System.out.println("Obrigado por utilizar o JavaBank:");
-
-        System.out.println("Dados atualizados da sua conta:");
+        account.alertFinal();
         System.out.println(account);
 
         sc.close();
