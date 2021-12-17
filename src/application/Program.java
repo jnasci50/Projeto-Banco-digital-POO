@@ -11,29 +11,42 @@ public class Program {
     public static void main(String[] args) {
 
         Locale.setDefault(Locale.US);
+
         Scanner sc = new Scanner(System.in);
+
         Account account;
         UserValidation usuario;
-        String usuarioArmazanado = " ";
-        String senhaArmazenada = "";
+
+        String confirmarUsario = " ";
+        String confirmarSenha = " ";
 
 
         System.out.print("Bem vindo ao JavaBank. ");
         System.out.println();
+        System.out.println("Cadastre Seu usuario");
+        String cadastrarUsuario = sc.nextLine();
+        System.out.println("Cadastre Seu Senha");
+        String cadastrarSenha = sc.nextLine();
 
-        usuario = new UserValidation();
+        usuario = new UserValidation(cadastrarUsuario,cadastrarSenha);
 
-        usuario.CadastroUser();
+usuario.
 
-        usuarioArmazanado = usuario.UserCadastred;
+        confirmarUsario = sc.nextLine();
 
-        if (usuario.UserCadastrado){
 
-            usuario.ValidacaoUser(usuarioArmazanado);
+        if (usuario.getUsuarioCadastrado()){
+
+            usuario.ValidarUsuario(usuario.getValidarUsuario(), confirmarUsario);
+
         }
 
 
+
+
+
         System.out.println("Entre com o numero da conta: ");
+
         int number = sc.nextInt();
 
         System.out.print("Entre com nome do titular: ");
@@ -43,7 +56,8 @@ public class Program {
  * Entrada de dados via teclado.
  *
  * */
-        String holder = sc.nextLine();
+        String holder = usuario.getValidarUsuario();
+
         System.out.print("Existe um deposito inicial? (y/n)? ");
 
         char response = sc.next().charAt(0);
