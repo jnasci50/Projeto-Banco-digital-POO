@@ -29,38 +29,47 @@ public class UserValidation {
     }
 
     public void setUsuarioCadastrado(boolean usuarioCadastrado) {
+
         this.usuarioCadastrado = usuarioCadastrado;
     }
 
     public String getCadastroUsuario() {
+
         return cadastroUsuario;
     }
 
     public String getCadastroSenha() {
+
         return cadastroSenha;
     }
 
     public boolean getUsuarioCadastrado() {
+
         return usuarioCadastrado;
     }
 
     public boolean getSenhaCadastrada() {
+
         return senhaCadastrada;
     }
 
     public String getValidarUsuario() {
+
         return validarUsuario;
     }
 
     public String getValidarSenha() {
+
         return validarSenha;
     }
 
     public boolean getUsuarioValidado() {
+
         return usuarioValidado;
     }
 
     public boolean getSenhaValidada() {
+
         return senhaValidada;
     }
 
@@ -68,10 +77,9 @@ public class UserValidation {
     //*inicio declaração dos Metodos da Class*/
 
 
-
     public String CadastrarUsario(String cadastroUsuario) {
 
-         if (cadastroUsuario != null) {
+        if (cadastroUsuario != null) {
             System.out.println("Seu Usuário: " + cadastroUsuario + ". Foi Cadastrado com sucesso!");
             this.usuarioCadastrado = true;
             this.validarUsuario = cadastroUsuario;
@@ -81,47 +89,46 @@ public class UserValidation {
     }
 
 
-    public String CadastrarSenha(String cadastroSenha){
+    public String CadastrarSenha(String cadastroSenha) {
 
-        if (cadastroSenha != null){
+        if (cadastroSenha != null) {
             System.out.println("Seu Senha " + cadastroSenha + ":Cadastrada com sucesso!");
-            this.cadastroSenha = true;
+            this.senhaCadastrada = true;
             this.validarSenha = cadastroSenha;
         }
         return validarSenha;
     }
 
 
+    public boolean ValidarUsuario(String validarUsuario, String confirmarUsuario) {
 
-    public String ValidarUsuario(String validarUsuario, String confirmarUsuario){
 
+       // System.out.println("Por favor Confirme Se Seu Usuario é Válidos");
 
-        System.out.println("Por favor Confirme Se Seu Usuario é Válidos");
-
-        System.out.println("Digite o seu usuário Cadastrado!");
-
+       // System.out.println("Digite o seu usuário Cadastrado!");
 
 
         if (validarUsuario.equals(confirmarUsuario)) {
-            System.out.println("Usuario e Senha Válidos");
-             this.validarUsuario = "valido";
+            System.out.println("Usuario Válido");
+            this.usuarioValidado = true;
         } else {
             System.out.println("Usuario  Inválidos.");
+            this.usuarioValidado = false;
 
-            for(int i = 1; i >= 0; --i) {
+            for (int i = 1; i >= 0; --i) {
                 System.out.println("Digite o seu usuário Cadastrado!");
 
-                  if (validarUsuario.equals(confirmarUsuario)) {
+                if (validarUsuario.equals(confirmarUsuario)) {
                     System.out.println("Usuario Válidos");
                     System.out.println("Acesso permitido");
-                    this.validarUsuario = "valido";
+                    this.usuarioValidado = true;
                     i = 0;
                 } else {
                     System.out.println("Você tem: " + i + " tentativas");
                     if (i == 0) {
                         System.out.println("Suas tentativas acabaram usuario e senha bloqueados!");
                         System.out.println("Por favor enviar email para: Jnasci50@gmail.com e recupere o seu acesso ao sistema.");
-                        this.validarUsuario = "bloqueado";
+
                     }
                 }
             }
@@ -130,35 +137,34 @@ public class UserValidation {
         return usuarioValidado;
     }
 
-    public String ValidacaoSenha(String validarSenha, String ConfirmarSenha){
+    public boolean ValidacaoSenha(String validarSenha, String ConfirmarSenha) {
 
-        System.out.println("Por favor Confirme Sua Senha Estão Válidos");
+       // System.out.println("Por favor Confirme Sua Senha Estão Válidos");
 
-        System.out.println("Digite a seu Senha Cadastrada!");
-
+       // System.out.println("Digite a seu Senha Cadastrada!");
 
 
         if (validarSenha.equals(ConfirmarSenha)) {
-            System.out.println("Senha Válidos");
-            this.cadastroSenha = "valido";
+            System.out.println("Senha Válidas");
+            this.senhaValidada = true;
         } else {
-            System.out.println("Senha Inválidos.");
+            System.out.println("Senha Inválidas.");
 
-            for(int i = 1; i >= 0; --i) {
-                System.out.println("Digite o seu usuário Cadastrado!");
+            for (int i = 1; i >= 0; --i) {
+
                 System.out.println("Digite a seu Senha Cadastrada!");
 
                 if (validarSenha.equals(ConfirmarSenha)) {
                     System.out.println("Senha Válidos");
                     System.out.println("Acesso permitido");
-                    this.usuarioValidado = "valido";
+                    this.senhaValidada = true;
                     i = 0;
                 } else {
                     System.out.println("Você tem: " + i + " tentativas");
                     if (i == 0) {
                         System.out.println("Suas tentativas acabaram usuario e senha bloqueados!");
                         System.out.println("Por favor enviar email para: Jnasci50@gmail.com e recupere o seu acesso ao sistema.");
-                        this.usuarioValidado = "bloqueado";
+                        this.senhaValidada = false;
                     }
                 }
             }

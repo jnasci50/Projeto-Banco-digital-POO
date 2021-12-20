@@ -20,43 +20,56 @@ public class Program {
         String confirmarUsario = " ";
         String confirmarSenha = " ";
 
-
         System.out.print("Bem vindo ao JavaBank. ");
         System.out.println();
+
         System.out.println("Cadastre Seu usuario");
         String cadastrarUsuario = sc.nextLine();
+
         System.out.println("Cadastre Seu Senha");
         String cadastrarSenha = sc.nextLine();
 
         usuario = new UserValidation(cadastrarUsuario,cadastrarSenha);
 
-usuario.
+        usuario.CadastrarUsario(usuario.getCadastroUsuario());
+
+        System.out.println("Confirme seu usuario");
 
         confirmarUsario = sc.nextLine();
 
+        usuario.CadastrarSenha(usuario.getCadastroSenha());
+
+        System.out.println("Confirme sua Senha");
+
+        confirmarSenha = sc.nextLine();
 
         if (usuario.getUsuarioCadastrado()){
 
             usuario.ValidarUsuario(usuario.getValidarUsuario(), confirmarUsario);
+        }
 
+        if (usuario.getSenhaCadastrada()){
+
+            usuario.ValidacaoSenha(usuario.getValidarSenha(),confirmarSenha);
         }
 
 
+        // apos cadastro e confirmação do usuario
 
 
+        int number = Account.numeroConta();
 
-        System.out.println("Entre com o numero da conta: ");
+        System.out.println("Este é o seu número de Conta: " + number);
 
-        int number = sc.nextInt();
 
-        System.out.print("Entre com nome do titular: ");
+        System.out.println("Titular da Conta: " + usuario.getValidarUsuario());
 
-        sc.nextLine();
+        String holder = usuario.getValidarUsuario();
+
 /**
- * Entrada de dados via teclado.
+ * inicio da Intaração entre class.
  *
  * */
-        String holder = usuario.getValidarUsuario();
 
         System.out.print("Existe um deposito inicial? (y/n)? ");
 
@@ -76,7 +89,7 @@ usuario.
 
         System.out.println();
 
-        System.out.println("Qual opera��o gostaria de realizar? Digite: 1° deposito / 2° saque");
+        System.out.println("Qual operação gostaria de realizar? Digite: 1° deposito / 2° saque");
 
         int select = sc.nextInt();
 

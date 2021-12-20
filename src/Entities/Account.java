@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Account {
@@ -65,6 +66,15 @@ public class Account {
 
     }
 
+    public static int numeroConta(){
+
+        Random conta = new Random();
+
+        int numeroDaConta = conta.nextInt(100000);
+
+        return  numeroDaConta;
+
+    }
 
     public String mensagemFinal() {
 
