@@ -119,15 +119,15 @@ public class UserValidation {
             System.out.println("Usuario  Inválidos.");
             this.usuarioValidado = false;
 
-            validarUsuario = "";
+            confirmarUsuario = "";
 
             for (int i = 1; i >= 0; --i) {
                 System.out.println("Digite o seu usuário Cadastrado!");
 
-                validarUsuario = sc.nextLine();
+                confirmarUsuario = sc.nextLine();
 
                 if (validarUsuario.equals(confirmarUsuario)) {
-                    System.out.println("Usuario Válidos");
+                    System.out.println("Usuario Válido");
                     System.out.println("Acesso permitido");
                     this.usuarioValidado = true;
                     i = 0;
@@ -158,16 +158,16 @@ public class UserValidation {
         } else {
             System.out.println("Senha Inválidas.");
 
-            validarSenha = "";
+            ConfirmarSenha = "";
 
             for (int i = 1; i >= 0; --i) {
 
                 System.out.println("Digite a seu Senha Cadastrada!");
 
-                validarSenha = sc.nextLine();
+                ConfirmarSenha = sc.nextLine();
 
                 if (validarSenha.equals(ConfirmarSenha)) {
-                    System.out.println("Senha Válidos");
+                    System.out.println("Senha Válidas");
                     System.out.println("Acesso permitido");
                     this.senhaValidada = true;
                     i = 0;
