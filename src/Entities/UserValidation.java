@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Scanner;
+
 public class UserValidation {
 
     private String cadastroUsuario;
@@ -13,6 +15,8 @@ public class UserValidation {
 
     private boolean usuarioValidado;
     private boolean senhaValidada;
+
+    Scanner sc = new Scanner(System.in);
 
     public UserValidation(String cadastroUsuario, String cadastroSenha) {
         this.cadastroUsuario = cadastroUsuario;
@@ -115,8 +119,12 @@ public class UserValidation {
             System.out.println("Usuario  Inválidos.");
             this.usuarioValidado = false;
 
+            validarUsuario = "";
+
             for (int i = 1; i >= 0; --i) {
                 System.out.println("Digite o seu usuário Cadastrado!");
+
+                validarUsuario = sc.nextLine();
 
                 if (validarUsuario.equals(confirmarUsuario)) {
                     System.out.println("Usuario Válidos");
@@ -150,9 +158,13 @@ public class UserValidation {
         } else {
             System.out.println("Senha Inválidas.");
 
+            validarSenha = "";
+
             for (int i = 1; i >= 0; --i) {
 
                 System.out.println("Digite a seu Senha Cadastrada!");
+
+                validarSenha = sc.nextLine();
 
                 if (validarSenha.equals(ConfirmarSenha)) {
                     System.out.println("Senha Válidos");

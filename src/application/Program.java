@@ -57,6 +57,7 @@ public class Program {
         // apos cadastro e confirmação do usuario
 
 
+
         int number = Account.numeroConta();
 
         System.out.println("Este é o seu número de Conta: " + number);
@@ -66,38 +67,48 @@ public class Program {
 
         String holder = usuario.getValidarUsuario();
 
+
+        if (usuario.getUsuarioValidado() && usuario.getSenhaValidada()){
+
+            System.out.print("Existe um deposito inicial? (y/n)? ");
+
+            char response = sc.next().charAt(0);
+
+            if (response == 'y') {
+                System.out.print("Insira o valor do deposito inicial: ");
+                double initialDeposit = sc.nextDouble();
+                account = new Account(number, holder, initialDeposit);
+            } else {
+                account = new Account(number, holder);
+            }
+
+            System.out.println();
+            System.out.println("Dados da sua conta:");
+            System.out.println(account);
+
+            System.out.println();
+
+            System.out.println("Qual operação gostaria de realizar? Digite: 1° deposito / 2° saque");
+
+            int select = sc.nextInt();
+
+            account.selectedOperation(select);
+            System.out.println(account);
+            System.out.println(account.mensagemFinal());
+
+            sc.close();
+
+        }else {
+            System.out.println("Por favor Valide Seus dados pela 2° vez");
+            usuario.ValidarUsuario(usuario.getValidarUsuario(), confirmarUsario);
+            usuario.ValidacaoSenha(usuario.getValidarSenha(),confirmarSenha);
+        }
 /**
  * inicio da Intaração entre class.
  *
  * */
 
-        System.out.print("Existe um deposito inicial? (y/n)? ");
 
-        char response = sc.next().charAt(0);
-
-        if (response == 'y') {
-            System.out.print("Insira o valor do deposito inicial: ");
-            double initialDeposit = sc.nextDouble();
-            account = new Account(number, holder, initialDeposit);
-        } else {
-            account = new Account(number, holder);
-        }
-
-        System.out.println();
-        System.out.println("Dados da sua conta:");
-        System.out.println(account);
-
-        System.out.println();
-
-        System.out.println("Qual operação gostaria de realizar? Digite: 1° deposito / 2° saque");
-
-        int select = sc.nextInt();
-
-        account.selectedOperation(select);
-        System.out.println(account);
-        System.out.println(account.mensagemFinal());
-
-        sc.close();
 
     }
 
